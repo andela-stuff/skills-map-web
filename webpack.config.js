@@ -1,18 +1,20 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 require('dotenv').config();
 
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
-  template: "./src/index.html",
-  filename: "./index.html"
+  template: 'public/index.html',
+  filename: './index.html'
 });
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundled.js',
+    publicPath: '/',
   },
   devServer: {
     proxy: {
@@ -25,31 +27,40 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
+          loader: 'babel-loader'
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(css|sass|scss)$/,
         use: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: "[name]_[local]_[hash:base64]",
-              sourceMap: true,
-              minimize: true
-            }
-          }
+          'style-loader',
+          'css-loader',
+          'sass-loader',
         ]
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf)$/,
+        loader: 'url-loader?limit=1000000',
+      },
+      {
+        test: /\.(jpg|png|svg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[hash].[ext]',
+          context: '',
+          publicPath: '/',
+        }
       }
     ]
   },
-  plugins: [htmlWebpackPlugin]
+  plugins: [
+    htmlWebpackPlugin,
+    new ExtractTextPlugin('[name].css'),
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 };

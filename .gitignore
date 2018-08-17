@@ -3,3 +3,4 @@ package-lock.json
 *.snap
 dist
 .env
+.DS_store

@@ -1,0 +1,43 @@
+@import '../../assets/css/styles.scss';
+
+.demo-drawer-header{
+  background-color: $defualt-color;
+  height: $header-height;
+  position: relative;
+  padding-left: 20px;
+
+  .demo-logo{
+    width: $header-height - 10;
+    height: $header-height - 10;
+    padding: 5px;
+    -webkit-animation: spin 30s linear infinite;
+    animation: spin 30s linear infinite;
+  }
+
+  span{
+    font-size: $brand-size;
+    vertical-align: middle;
+  }
+}
+
+.mdl-layout__drawer{
+  border: none !important;
+}
+
+.demo-navigation .mdl-navigation__link .material-icons{
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.56);
+  margin-right: 32px;
+}
+
+demo-avatar{
+  width: 100px;
+  height: 100px;
+}
+
+@keyframes spin {
+  100%{
+    -webkit-transform: rotate(1turn);
+    transform: rotate(1turn);
+  }
+}

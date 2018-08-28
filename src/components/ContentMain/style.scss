@@ -1,0 +1,82 @@
+@import '../../assets/css/styles';
+
+.page-content{
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+
+  h4 {
+    color: #C3C3C3;
+  }
+}
+
+.demo-list-item {
+  width: 100%;
+
+  .mdl-list__item:hover{
+    background: $hover-color;
+    cursor: pointer;
+  }
+}
+
+.framework-list {
+  background: #FFF;
+  flex-basis: 250px;
+  border-right: 1px solid rgba(165, 165, 165, 0.3);
+}
+
+.demo-card-square.mdl-card {
+  width: 320px !important;
+}
+.demo-card-square > .mdl-card__title {
+  color: #fff;
+  background: bottom right 15% no-repeat;
+}
+
+@media screen and (max-width: 1024px) {
+  .mdl-layout--fixed-drawer > .mdl-layout__content {
+    margin-left: 0 !important;
+  }
+}
+
+
+// loading placeholder
+.text-input__loading {
+  border-radius: 4px;
+  max-width: 100%;
+  padding: 10px;
+
+  &--line {
+      height: 10px;
+      margin: 10px 0;
+      border-radius: 100px;
+      animation: listPlaceholder 1s infinite ease-in-out;
+  }
+
+  div {
+      @include nth-children(1, 5, 9, 14, 16, 19, 24, 28, 34) {
+          width: 150px;
+      }
+      @include nth-children(2, 6, 10, 13, 23, 17, 20, 25, 29) {
+          width: 100%;
+      }
+      @include nth-children(3, 7, 12, 18, 21, 32, 26, 30) {
+          width: 50px;
+      }
+      @include nth-children(4, 8, 11, 15, 22, 33, 27, 31) {
+          width: 100px;
+      }
+  }
+}
+
+@keyframes listPlaceholder {
+  0% {
+      background-color: rgba(165, 165, 165, 0.1)
+  }
+  50% {
+      background-color: rgba(165, 165, 165, 0.3)
+  }
+  100% {
+      background-color: rgba(165, 165, 165, 0.1)
+  }
+}

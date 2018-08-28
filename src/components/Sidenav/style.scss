@@ -15,18 +15,27 @@
   }
 
   span{
+    color: #FFF;
     font-size: $brand-size;
     vertical-align: middle;
   }
 }
 
 .mdl-layout__drawer{
+  // width: 110px !important;
   border: none !important;
 }
 
+// .mdl-layout__content {
+//   margin-left: 110px !important;
+// }
+
+// .mdl-layout--fixed-drawer.is-upgraded:not(.is-small-screen) > .mdl-layout__header {
+//   margin-left: 110px !important;
+//   width: calc(100% - 110px) !important;
+// }
+
 .demo-navigation .mdl-navigation__link .material-icons{
-  font-size: 24px;
-  color: rgba(255, 255, 255, 0.56);
   margin-right: 32px;
 }
 

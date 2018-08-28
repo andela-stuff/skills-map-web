@@ -61,6 +61,7 @@ module.exports = {
     new ExtractTextPlugin('[name].css'),
   ],
   resolve: {
-    extensions: ['.js', '.jsx']
-  }
+    extensions: [' ', '.js', '.jsx']
+  },
+  performance: { hints: false }
 };
